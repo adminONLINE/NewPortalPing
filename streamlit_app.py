@@ -60,7 +60,7 @@ def login(name,passw):
        username.send_keys(name)
        password = driver.find_element(By.NAME, "Sifre")
        password.send_keys(passw)
-       login_button = driver.find_element(By.XPATH,"//*[contains(text(), 'Giriş')]")
+       login_button = driver.find_element(By.TAG_NAME, "button")
        login_button.click()
 
        # Wait for the page to load
