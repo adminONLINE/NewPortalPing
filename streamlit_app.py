@@ -20,6 +20,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
+from selenium.webdriver.common.by import By
+
 
 
 
@@ -54,11 +56,11 @@ def login(name,passw):
        st.write("Lukoil Portalına bağlanıldı.")
 
        # Find the login form elements and enter your credentials
-       username = driver.find_element_by_name('Kod')
+       username = driver.find_element(By.NAME, "Kod")
        username.send_keys(name)
-       password = driver.find_element_by_name('Sifre')
+       password = driver.find_element(By.NAME, "Sifre")
        password.send_keys(passw)
-       login_button = driver.find_element_by_xpath("//*[contains(text(), 'Giriş')]")
+       login_button = driver.find_element(By.XPATH,"//*[contains(text(), 'Giriş')]")
        login_button.click()
 
        # Wait for the page to load
@@ -70,7 +72,7 @@ def login(name,passw):
        st.write("Lukoil Portalına giriş yapıldı.")
        # Now you can scrape the data from the page
        # For example, you can find an element by its ID and get its text
-       data_element = driver.find_element_by_id('dvBayiList_grid')
+       data_element = driver.find_element(By.ID, 'dvBayiList_grid')
        text_data = data_element.text
        #print(data_element.text)
        driver.close()
